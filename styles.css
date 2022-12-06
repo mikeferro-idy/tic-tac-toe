@@ -1,0 +1,68 @@
+:root {
+    --primary: #334155;
+    --light: #f1f5f9;
+    --dark: #0f172a;
+}
+
+html {
+    color: var(--dark);
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-rows: 100px 1fr 50px;
+}
+
+/* Header */
+header {
+    place-self: center;
+    font-size: 1.5rem;
+}
+/* Grid Board */
+.container {
+    place-self: center;
+}
+
+.game-board {
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+}
+
+.row {
+    display: flex;
+   /* grid-template-columns: repeat(3,1fr); */
+}
+
+.box {
+    border: solid;
+    width: 100px;
+    height: 100px;
+    display: grid;
+    place-items: center;
+    font-size: 64px;
+}
+
+/* .box:hover {
+    background-color: var(--dark);
+} */
+
+
+.left {
+    border-left: none;
+}
+
+.top {
+    border-top: none;
+}
+
+.right {
+    border-right: none;
+}
+
+.bottom {
+    border-bottom: none;
+}
