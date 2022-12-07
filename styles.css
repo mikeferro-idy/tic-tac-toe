@@ -8,27 +8,82 @@ html {
     color: var(--dark);
     padding: 0;
     margin: 0;
-    height: 100vh;
+    
     font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
+    height: 100vh;
     display: grid;
-    grid-template-rows: 100px 50px 1fr 50px 50px;
+    grid-template-rows: 100px 500px 30px;
 }
 
 /* Header */
 header {
     place-self: center;
-    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+/* Main Container */
+.main-container {
+    display: grid;
 }
 
 /* Dashboard */
 .dashboard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items: center;
     
+}
+
+.start-screen {
+    
+    display: grid;
+    grid-template: 1fr auto / 1fr 1fr;
+    align-self: center;
+    gap: 16px
+    /* grid-template-columns: 1fr 1fr; */
+}
+
+.start-button {
+    grid-column: 1 / span 2;
+    place-self: center;
+}
+
+.player-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name-input {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+
+.name-input label {
+    font-size: 12px;
+    text-align: center;
+}
+
+.icon {
+    display: grid;
+    place-items: center;
+    border: solid;
+    border-radius: 4px;
+    width: 72px;
+    height: 72px;
+    font-size: 64px;
+    margin-bottom: 8px;
+}
+
+.clearBtn {
+    display: none;
 }
 
 button {
@@ -43,7 +98,11 @@ button:hover {
 
 /* Grid Board */
 .container {
+    padding-top: 16px;
+    display: none;
     place-self: center;
+    grid-template-rows: 1fr 100px;
+    place-items: center;
 }
 
 .game-board {
@@ -91,4 +150,15 @@ button:hover {
     display: grid;
     margin-top: 1rem;
     place-items: center;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+/* Footer */
+
+footer {
+    display: grid;
+    place-items: center;
+    background-color: var(--dark);
+    color: var(--light)
 }

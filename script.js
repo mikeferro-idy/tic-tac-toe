@@ -20,7 +20,12 @@ const gameBoard = (() => {
 const displayController = (() => {
     const boxElements = document.querySelectorAll('.box');
     const clearBtn = document.querySelector(".clearBtn");
+    const startBtn = document.querySelector('.start-button');
     const messageBox = document.querySelector('.message');
+    const input = document.querySelectorAll('input');
+
+    const startScreen = document.querySelector('.start-screen');
+    const container = document.querySelector('.container');
 
     boxElements.forEach((box) => 
         box.addEventListener('click',(e) => {
@@ -35,13 +40,27 @@ const displayController = (() => {
     
     clearBtn.addEventListener('click', () => {  clearBoard();});
 
+    startBtn.addEventListener('click', (e) => {
+        gameController.setPlayerNames(input[0].value,input[1].value);
+        console.log(input[0].value,input[1].value);
+        startScreen.style.display = 'none';
+        container.style.display = 'grid';
+        clearBtn.style.display = 'grid'; 
+
+    })
+
     const updateBoard = () => {
         boxElements.forEach((box,index) => box.textContent = gameBoard.getBox(index));
     };
    
     const clearBoard = () => {
         gameBoard.reset();
-        boxElements.forEach((box,index) => box.textContent = '');        
+        boxElements.forEach((box,index) => box.textContent = '');
+        startScreen.style.display = 'grid';
+        container.style.display = 'none';
+        clearBtn.style.display = 'none';
+        gameController.restart(); 
+
     }
 
     const displayMessage = (message) => messageBox.textContent = message;
@@ -55,10 +74,15 @@ const displayController = (() => {
 // Player Factory
 const Player = (team) => {
     this.team = team;
+    let name = String("player" + team);
+
+    const setName = (newName) => name = newName;
+
+    const getName = () => name;
 
     const getTeam = () => team;
 
-    return{ getTeam };  
+    return{ getTeam, setName, getName };  
 }
 
 // Game Module
@@ -68,13 +92,20 @@ const gameController = (() => {
     const playerO = Player("O");
 
     let currentPlayer = playerX;
+    let gameOver = false;
 
     const playRound = (index) => {
-        if (gameBoard.getBox(index)) return;
+        if (gameBoard.getBox(index) || gameOver) return;
         gameBoard.setBox(index, currentPlayer.getTeam());
-        checkWinner(index);
-        console.log(checkTie());
-        currentPlayer.getTeam() === 'X' ? currentPlayer = playerO : currentPlayer = playerX
+        if (checkWinner(index)) {
+            displayWinner();
+            gameOver = true;
+        }
+        if (checkTie()) {
+            displayTie();
+            gameOver = true;
+        }
+        currentPlayer.getTeam() === 'X' ? currentPlayer = playerO : currentPlayer = playerX;
        
     }
 
@@ -102,10 +133,22 @@ const gameController = (() => {
             .some((possibleCombination)=> 
                 possibleCombination.every((index)=> gameBoard.getBox(index) == currentPlayer.getTeam())));
     };
-    
-    const displayWinner = () => {
 
+    const setPlayerNames = (name1,name2) => {
+        playerX.setName(name1);
+        playerO.setName(name2);
+    }
+    
+    const displayWinner = () => displayController.displayMessage(currentPlayer.getName() + " has Won! ");
+        
+    
+    const displayTie = () => displayController.displayMessage("Tie");
+
+    const restart = () => {
+        currentPlayer = playerX;
+        gameOver = false;
+        displayController.clearMessage();
     }
 
-    return {playRound};
+    return {playRound, setPlayerNames, restart};
 })();

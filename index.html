@@ -11,33 +11,57 @@
 <body>
     <header>
        <h1>Tic-Tac-Toe</h1> 
+       <p>This learning project was built to demonstrate <strong> Factory Functions</strong> and <strong>the Module Pattern</strong>.</p>
     </header>
-    <div class="dashboard">
-        <div class="clearBtn"><button>Clear</button></div>
-    </div>
-    <div class="container">
-        <div class="game-board">
-            <div>
-                <div class="row">
-                    <div class="box top left" id="box-0"></div>
-                    <div class="box top" id="box-1"></div>
-                    <div class="box top right" id="box-2"></div>
+    <div class="main-container">
+        <div class="dashboard">
+            <div class="clearBtn"><button>Restart</button></div>
+            <div class="start-screen">
+                <div class="player-name">
+                    <div class="icon">X</div>
+                    <div class="name-input">
+                        <label for="playerx-name">Enter Name</label>
+                        <input type="text" name="playerx-name" id="playerx-name" placeholder="Player 1">
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="box left" id="box-3"></div>
-                    <div class="box" id="box-4"></div>
-                    <div class="box right" id="box-5"></div>
+                <div class="player-name">
+                    <div class="icon">O</div>
+                    <div class="name-input">
+                        <label for="playero-name">Enter Name</label>
+                        <input type="text" name="playero-name" id="playero-name" placeholder="Player 2">
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="box bottom left" id="box-6"></div>
-                    <div class="box bottom" id="box-7"></div>
-                    <div class="box bottom right" id="box-8"></div>
+                <div class="start-button">
+                    <button type="submit">Start Game</button>
                 </div>
             </div>
         </div>
-        <div class="message">Message</div>
+        <div class="container">
+            <div class="game-board">
+                <div>
+                    <div class="row">
+                        <div class="box top left" id="box-0"></div>
+                        <div class="box top" id="box-1"></div>
+                        <div class="box top right" id="box-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="box left" id="box-3"></div>
+                        <div class="box" id="box-4"></div>
+                        <div class="box right" id="box-5"></div>
+                    </div>
+                    <div class="row">
+                        <div class="box bottom left" id="box-6"></div>
+                        <div class="box bottom" id="box-7"></div>
+                        <div class="box bottom right" id="box-8"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="message"></div>
+        </div>
     </div>
 
-    <footer></footer>
+    <footer> Michael Ferro 2022
+        <a href="https://github.com/mikeferro-idy">github</a>
+    </footer>
 </body>
 </html>
