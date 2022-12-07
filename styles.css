@@ -14,7 +14,7 @@ html {
 
 body {
     display: grid;
-    grid-template-rows: 100px 1fr 50px;
+    grid-template-rows: 100px 50px 1fr 50px 50px;
 }
 
 /* Header */
@@ -22,6 +22,25 @@ header {
     place-self: center;
     font-size: 1.5rem;
 }
+
+/* Dashboard */
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+button {
+    padding: 8px 16px;
+    background: var(--light)
+}
+
+button:hover {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
 /* Grid Board */
 .container {
     place-self: center;
@@ -29,7 +48,6 @@ header {
 
 .game-board {
     display: grid;
-    grid-template-rows: repeat(3,1fr);
 }
 
 .row {
@@ -65,4 +83,12 @@ header {
 
 .bottom {
     border-bottom: none;
+}
+
+/* Message */
+
+.message {
+    display: grid;
+    margin-top: 1rem;
+    place-items: center;
 }

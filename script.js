@@ -68,15 +68,13 @@ const gameController = (() => {
     const playerO = Player("O");
 
     let currentPlayer = playerX;
-    displayController.displayMessage(`Player ${playerX.getTeam()}'s Turn`)
 
     const playRound = (index) => {
         if (gameBoard.getBox(index)) return;
         gameBoard.setBox(index, currentPlayer.getTeam());
         checkWinner(index);
         console.log(checkTie());
-        currentPlayer.getTeam() === 'X' ? currentPlayer = playerO : currentPlayer = playerX;
-        displayController.displayMessage(`Player ${currentPlayer.getTeam()}'s Turn`)
+        currentPlayer.getTeam() === 'X' ? currentPlayer = playerO : currentPlayer = playerX
        
     }
 
